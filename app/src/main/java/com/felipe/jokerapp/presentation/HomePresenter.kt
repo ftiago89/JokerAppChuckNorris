@@ -1,13 +1,13 @@
 package com.felipe.jokerapp.presentation
 
+import android.graphics.Color
 import com.felipe.jokerapp.data.CategoryRemoteDataSource
 import com.felipe.jokerapp.data.ListCategoryCallback
 import com.felipe.jokerapp.model.Category
 import com.felipe.jokerapp.view.HomeFragment
 
 class HomePresenter(
-    private val view: HomeFragment,
-    private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
+    private val view: HomeFragment, private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
 ) : ListCategoryCallback {
 
     fun findAllCategories() {
@@ -17,7 +17,13 @@ class HomePresenter(
 
 
     override fun onSuccess(response: List<String>) {
-        val categories = response.map { Category(it, 0xFFFF0000) }
+        val start = 40
+        val end = 190
+        val step = (end - start) / response.size
+        val categories = response.mapIndexed { index, value ->
+            val hsv = floatArrayOf((start + (step * index)).toFloat(), 100.0f, 100.0f)
+            Category(value, Color.HSVToColor(hsv).toLong())
+        }
         view.showCategories(categories)
     }
 
