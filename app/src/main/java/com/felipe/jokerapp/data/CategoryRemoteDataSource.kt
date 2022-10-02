@@ -10,7 +10,7 @@ class CategoryRemoteDataSource() {
 
     fun findAllCategories(callback: ListCategoryCallback) {
         HTTPClient.retrofit().create(ChuckNorrisAPI::class.java)
-            .findAllCategories(HTTPClient.API_KEY)
+            .findAllCategories()
             .enqueue(object : Callback<List<String>> {
                 override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
                     if (response.isSuccessful) {
