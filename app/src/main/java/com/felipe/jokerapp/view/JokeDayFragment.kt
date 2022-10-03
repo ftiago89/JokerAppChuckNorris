@@ -12,46 +12,36 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.felipe.jokerapp.R
 import com.felipe.jokerapp.model.Joke
-import com.felipe.jokerapp.presentation.JokePresenter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.felipe.jokerapp.presentation.JokeDayPresenter
 import com.squareup.picasso.Picasso
 
-class JokeFragment : Fragment() {
+class JokeDayFragment : Fragment() {
 
-    private lateinit var presenter: JokePresenter
+    private lateinit var presenter: JokeDayPresenter
 
     private lateinit var progressBar: ProgressBar
     private lateinit var jokeTextView: TextView
     private lateinit var imageView: ImageView
 
-    companion object {
-        const val CATEGORY_KEY = "category"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = JokePresenter(this)
+        presenter = JokeDayPresenter(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_joke, container, false)
+        return inflater.inflate(R.layout.fragment_joke_day, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val categoryName = arguments?.getString(CATEGORY_KEY)!!
-        activity?.findViewById<Toolbar>(R.id.toolbar_main)?.title = categoryName
+        activity?.findViewById<Toolbar>(R.id.toolbar_main)?.title = getString(R.string.menu_joke_day)
 
-        progressBar = view.findViewById(R.id.joke_progress_bar)
-        jokeTextView = view.findViewById(R.id.txt_joke)
-        imageView = view.findViewById(R.id.img_joke)
+        progressBar = view.findViewById(R.id.joke_day_progress_bar)
+        jokeTextView = view.findViewById(R.id.txt_joke_day)
+        imageView = view.findViewById(R.id.img_joke_day)
 
-        presenter.getJoke(categoryName)
-
-        view.findViewById<FloatingActionButton>(R.id.fab_joke).setOnClickListener {
-            presenter.getJoke(categoryName)
-        }
+        presenter.getJoke()
     }
 
     fun showJoke(joke: Joke) {
