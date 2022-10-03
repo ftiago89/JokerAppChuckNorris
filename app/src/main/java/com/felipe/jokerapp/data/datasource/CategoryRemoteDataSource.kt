@@ -1,4 +1,4 @@
-package com.felipe.jokerapp.data
+package com.felipe.jokerapp.data.datasource
 
 import com.felipe.jokerapp.data.http.ChuckNorrisAPI
 import com.felipe.jokerapp.data.http.HTTPClient

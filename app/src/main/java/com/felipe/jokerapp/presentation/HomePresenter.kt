@@ -1,8 +1,8 @@
 package com.felipe.jokerapp.presentation
 
 import android.graphics.Color
-import com.felipe.jokerapp.data.CategoryRemoteDataSource
-import com.felipe.jokerapp.data.ListCategoryCallback
+import com.felipe.jokerapp.data.datasource.CategoryRemoteDataSource
+import com.felipe.jokerapp.data.datasource.ListCategoryCallback
 import com.felipe.jokerapp.model.Category
 import com.felipe.jokerapp.view.HomeFragment
 

@@ -1,4 +1,4 @@
-package com.felipe.jokerapp.data
+package com.felipe.jokerapp.data.datasource
 
 interface ListCategoryCallback {
 

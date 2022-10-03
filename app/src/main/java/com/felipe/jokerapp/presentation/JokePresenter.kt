@@ -1,7 +1,7 @@
 package com.felipe.jokerapp.presentation
 
-import com.felipe.jokerapp.data.GetJokeCallback
-import com.felipe.jokerapp.data.JokeRemoteDataSource
+import com.felipe.jokerapp.data.datasource.GetJokeCallback
+import com.felipe.jokerapp.data.datasource.JokeRemoteDataSource
 import com.felipe.jokerapp.model.Joke
 import com.felipe.jokerapp.view.JokeFragment
 
